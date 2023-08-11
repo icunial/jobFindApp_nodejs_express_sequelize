@@ -33,6 +33,13 @@ router.post("/add", (req, res) => {
     error.push({ msg: `Please add a budget` });
   }
 
+  if (error.length !== 0) {
+    return res.status(400).json({
+      statusCode: 400,
+      error,
+    });
+  }
+
   // Insert into table
   Gig.create({
     name,
