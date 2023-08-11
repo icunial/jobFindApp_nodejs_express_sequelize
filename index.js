@@ -18,6 +18,9 @@ app.get("/", (req, res) => {
   res.send("Job Find App");
 });
 
+// Gig routes
+app.use("/api/gigs", require("./routes/gigs"));
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
