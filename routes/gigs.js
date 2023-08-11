@@ -14,16 +14,24 @@ router.get("/", (req, res) => {
 });
 
 // Add a gig
-router.get("/add", (req, res) => {
-  const data = {
-    name: "Title 2",
-    technologies: "Tecnologies Title 2",
-    budget: "$5000",
-    description: "Description Title 2",
-    contact_email: "title2@email.com",
-  };
+router.post("/add", (req, res) => {
+  const { name, technologies, budget, description, contact_email } = req.body;
 
-  let { name, technologies, budget, description, contact_email } = data;
+  // Validations
+  let error = [];
+
+  if (!name) {
+    error.push({ msg: `Please add a title` });
+  }
+  if (!technologies) {
+    error.push({ msg: `Please add some technologies` });
+  }
+  if (!description) {
+    error.push({ msg: `Please add a description` });
+  }
+  if (!budget) {
+    error.push({ msg: `Please add a budget` });
+  }
 
   // Insert into table
   Gig.create({
