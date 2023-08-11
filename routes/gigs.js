@@ -15,30 +15,37 @@ router.get("/", (req, res) => {
 
 // Add a gig
 router.post("/add", (req, res) => {
-  const { name, technologies, budget, description, contact_email } = req.body;
+  let { name, technologies, budget, description, contact_email } = req.body;
 
   // Validations
-  let error = [];
+  let errors = [];
 
   if (!name) {
-    error.push({ msg: `Please add a title` });
+    errors.push({ msg: `Please add a title` });
   }
   if (!technologies) {
-    error.push({ msg: `Please add some technologies` });
+    errors.push({ msg: `Please add some technologies` });
   }
   if (!description) {
-    error.push({ msg: `Please add a description` });
-  }
-  if (!budget) {
-    error.push({ msg: `Please add a budget` });
+    errors.push({ msg: `Please add a description` });
   }
 
-  if (error.length !== 0) {
+  // Send error response
+  if (errors.length !== 0) {
     return res.status(400).json({
       statusCode: 400,
-      error,
+      errors,
     });
   }
+
+  if (!budget) {
+    budget = "Unknown";
+  } else {
+    budget = `$${budget}`;
+  }
+
+  // Make technologies lowercase and remove space after coma
+  technologies = technologies.toLowerCase().replace(/, /g, ",");
 
   // Insert into table
   Gig.create({
