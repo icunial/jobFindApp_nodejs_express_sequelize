@@ -7,8 +7,10 @@ const { DATE } = require("sequelize");
 router.get("/", (req, res) => {
   Gig.findAll()
     .then((gigs) => {
-      console.log(gigs);
-      res.status(200);
+      res.status(200).json({
+        statusCode: 200,
+        data: gigs,
+      });
     })
     .catch((error) => console.log(error));
 });
@@ -28,6 +30,9 @@ router.post("/add", (req, res) => {
   }
   if (!description) {
     errors.push({ msg: `Please add a description` });
+  }
+  if (!contact_email) {
+    errors.push({ msg: `Please add a contact email` });
   }
 
   // Send error response
@@ -55,7 +60,12 @@ router.post("/add", (req, res) => {
     description,
     contact_email,
   })
-    .then((gig) => console.log(gig))
+    .then((gig) =>
+      res.status(201).json({
+        statusCode: 201,
+        data: gig,
+      })
+    )
     .catch((err) => console.log(err));
 });
 
