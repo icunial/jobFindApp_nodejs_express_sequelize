@@ -1,0 +1,19 @@
+{
+  "name": "jobfindapp_nodejs_express_sequelize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icunial/jobFindApp_nodejs_express_sequelize.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/icunial/jobFindApp_nodejs_express_sequelize/issues"
+  },
+  "homepage": "https://github.com/icunial/jobFindApp_nodejs_express_sequelize#readme"
+}
