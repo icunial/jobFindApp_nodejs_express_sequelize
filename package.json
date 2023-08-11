@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/icunial/jobFindApp_nodejs_express_sequelize/issues"
   },
-  "homepage": "https://github.com/icunial/jobFindApp_nodejs_express_sequelize#readme"
+  "homepage": "https://github.com/icunial/jobFindApp_nodejs_express_sequelize#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.2",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.32.1"
+  }
 }
