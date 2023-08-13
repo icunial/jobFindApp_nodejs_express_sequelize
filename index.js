@@ -23,6 +23,8 @@ app.use("/api/gigs", require("./routes/gigs"));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}...`);
+db.sync({ force: true }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}...`);
+  });
 });

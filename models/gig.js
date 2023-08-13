@@ -22,7 +22,7 @@ const Gig = db.define(
     },
   },
   {
-    timestamps: false,
+    timestamps: true,
     createdAt: true,
     updatedAt: true,
   }
