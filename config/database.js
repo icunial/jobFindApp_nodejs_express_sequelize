@@ -1,5 +1,9 @@
+require("dotenv").config();
+
 // Sequelize connection
 const Sequelize = require("sequelize");
-const db = new Sequelize("postgres://postgres:telefe14@localhost:5432/jobs_db");
+const db = new Sequelize(
+  `postgres://${process.env.USERNAME_DB}:${process.env.PASSWORD}@${process.env.HOSTNAME}:${process.env.PORT_DB}/${process.env.DATABASE}`
+);
 
 module.exports = db;

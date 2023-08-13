@@ -3,8 +3,6 @@ const app = express();
 
 const db = require("./config/database");
 
-require("dotenv").config();
-
 // Test db
 db.authenticate()
   .then(() => console.log("Database connected..."))
